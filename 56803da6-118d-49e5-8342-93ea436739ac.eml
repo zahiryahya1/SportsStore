@@ -1,0 +1,15 @@
+X-Sender: sportsstore@example.com
+X-Receiver: orders@example.com
+MIME-Version: 1.0
+From: sportsstore@example.com
+To: orders@example.com
+Date: 13 Oct 2017 14:25:57 -0700
+Subject: New order submitted!
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+A new order has been submitted=0D=0A---=0D=0AItems:=0D=0A1 x Kaya=
+k (subtotal: $275.00Total order value: $275.00---=0D=0AShip to:=0D=0A=
+Zahir Yahya=0D=0A1951 17th Ave=0D=0A432=0D=0A=0D=0Asanta cruz=0D=0A=
+California=0D=0AUnited States=0D=0A95062=0D=0A---=0D=0AGift wrap:=
+ No
