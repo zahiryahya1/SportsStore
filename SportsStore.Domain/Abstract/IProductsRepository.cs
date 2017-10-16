@@ -9,5 +9,8 @@ namespace SportsStore.Domain.Abstract
         // sequence of Product objects, without saying how or where the
         // data is stored or retrieved
         IEnumerable<Product> Products { get; }
+
+        void SaveProduct(Product product);
+        Product DeleteProduct(int productID);
     }
 }
