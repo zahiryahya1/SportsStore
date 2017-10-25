@@ -9,18 +9,31 @@
                  src="@Url.Action("GetImage", "Product", new { Model.ProductID })" />
         </div>
     }
+
+    @if (Model.Amount < 10 && Model.Amount > 0)
+    {
+        <span class="pull-right label label-default">Stock: @Model.Amount</span>
+    }    
+
     <h3>
         <strong>@Model.Name</strong>
         <span class="pull-right label label-primary">@Model.Price.ToString("c")</span>
     </h3>
 
-    @using (Html.BeginForm("AddToCart", "Cart"))
+    @if (Model.Amount == 0)
     {
-        <div class="pull-right">
-            @Html.HiddenFor(x => x.ProductID)
-            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="Add to cart" />
-        </div>
+        <h3><span class="pull-right label label-warning">Out of stock!</span></h3>
+    }
+    else
+    {
+        using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            <div class="pull-right">
+                @Html.HiddenFor(x => x.ProductID)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-success" value="Add to cart" />
+            </div>
+        }
     }
 
     <span class="lead"> @Model.Description</span>

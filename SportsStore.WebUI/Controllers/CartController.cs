@@ -76,9 +76,36 @@ namespace SportsStore.WebUI.Controllers
                 ModelState.AddModelError("", "Sorry, your cart is empty!");
             }
 
+            // check if thequantity is less then the actual amount in the db
+            for (int i = 0; i < cart.Lines.Count(); i++)
+            {
+                Product tempInCart;
+                tempInCart = cart.Lines.ElementAt(i).Product;
+
+                var prod = repository.Products.FirstOrDefault(item => item.ProductID == tempInCart.ProductID);
+                // should never happen. sanity check
+                if (prod == null)
+                {
+                    ModelState.AddModelError("", "Product not found in Inventory!");
+                    break;
+                }
+
+                if (cart.Lines.ElementAt(i).Quantity > prod.Amount)
+                {
+                    ModelState.AddModelError("", "Quantity selected exceeds inventory! Please remove Items from Cart.");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 orderProcessor.ProcessOrder(cart, shippingDetails);
+                // for each product, remove the amount
+                for (int i = 0; i < cart.Lines.Count(); i++)
+                {
+                    var cartItem = cart.Lines.ElementAt(i);
+
+                    repository.UpdateAmount(cartItem.Product, cartItem.Quantity);
+                }
                 cart.Clear();
                 return View("Completed");
             }

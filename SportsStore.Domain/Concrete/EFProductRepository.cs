@@ -36,7 +36,19 @@ namespace SportsStore.Domain.Concrete
                     dbEntry.Category = product.Category;
                     dbEntry.ImageData = product.ImageData;
                     dbEntry.ImageMimeType = product.ImageMimeType;
+                    dbEntry.Amount += product.Amount;
                 }
+            }
+
+            context.SaveChanges();
+        }
+
+        public void UpdateAmount(Product product, int amount)
+        {
+            Product dbEntry = context.Products.Find(product.ProductID);
+            if (dbEntry != null)
+            {
+                dbEntry.Amount -= amount;
             }
 
             context.SaveChanges();
@@ -53,6 +65,6 @@ namespace SportsStore.Domain.Concrete
             }
 
             return dbEntry;
-        } 
+        }
     }
 }

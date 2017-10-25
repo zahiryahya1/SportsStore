@@ -1,0 +1,15 @@
+X-Sender: sportsstore@example.com
+X-Receiver: orders@example.com
+MIME-Version: 1.0
+From: sportsstore@example.com
+To: orders@example.com
+Date: 25 Oct 2017 13:37:26 -0700
+Subject: New order submitted!
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+A new order has been submitted=0D=0A---=0D=0AItems:=0D=0A1 x Life=
+jacket (subtotal: $48.952 x Green Kayak (subtotal: $550.00Total o=
+rder value: $598.95---=0D=0AShip to:=0D=0AZahir Yahya=0D=0A1951 1=
+7th ave=0D=0A=0D=0A=0D=0Asanta cruz=0D=0ACA=0D=0AUnited States=0D=0A=
+95062=0D=0A---=0D=0AGift wrap: No

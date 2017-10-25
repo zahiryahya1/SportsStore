@@ -27,11 +27,24 @@
                         break;
                     default:
                         <div class="form-group">
-                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @if (property.PropertyName == "Amount")
+                            {
+                                <label>Add to Inventory</label>
+                            }
+                            else
+                            {
+                                <label>@(property.DisplayName ?? property.PropertyName)</label>
+
+                            }
                             @if (property.PropertyName == "Description")
                             {
                                 @Html.TextArea(property.PropertyName, null,
                                 new { @class = "form-control", rows = 5 })
+                            }
+                            else if (property.PropertyName == "Amount")
+                            {
+                                @Html.TextBox(property.PropertyName, 0,
+                                new { @class = "form-control" })
                             }
                             else
                             {

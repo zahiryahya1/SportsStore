@@ -23,6 +23,10 @@ namespace SportsStore.Domain.Entities
         [Required(ErrorMessage = "Please specify a category")]
         public string Category { get; set; }
 
+        [Required(ErrorMessage = "Please enter amount in stock")]
+        public int Amount { get; set; }
+
+
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
     }
